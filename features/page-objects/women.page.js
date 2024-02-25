@@ -3,7 +3,8 @@ import { browser } from '@wdio/globals';
 
 class WomenPage extends Page {
     get sortBy() { return $('#selectProductSort');}
-    get firstProduct() { return $('.product_img_link');}
+    get firstProduct() { return $$('[itemprop="name"] a')[0];}
+    get viewButton() { return $('[title="view"]');}
 
     async selectFromMenu(sortOption) {
         await this.sortBy.click();

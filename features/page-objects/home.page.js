@@ -6,6 +6,7 @@ class HomePage extends Page {
     get searchBarInput() { return $('.search_query');}
     get searchBarIcon() { return $('[name="submit_search"]');}
     get womenSection() { return $('.sf-with-ul[title="Women"]');}
+    get cartIcon() { return $('.shopping_cart a');}
 
     async open() {
         await browser.navigateTo('http://automationpractice.pl');

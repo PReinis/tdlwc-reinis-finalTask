@@ -5,6 +5,5 @@ Feature: Validating 'text contains' for items after searching
 example, searching for "Blouse" should only find results containing text "Blouse"
     Given I am on the home page
     And I have logged in as Tomass
-    And I am on the home page
     When I search for "Blouse"
     Then I see items containing text "Blouse"

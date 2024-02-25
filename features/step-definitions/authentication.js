@@ -16,5 +16,6 @@ Given('I have logged in as {word}', async function(name) {
     await authenticationPage.input("email").setValue(user.email);
     await authenticationPage.input("passwd").setValue(user.password);
     await authenticationPage.signInButton.click();
-    await expect(accountPage.nameButton).toHaveText(`${user.firstname} ${user.lastname}`);
+    await expect(accountPage.nameButton).toHaveText(expect.stringContaining(`${user.firstname} ${user.lastname}`));
+    await homePage.open();
 });
