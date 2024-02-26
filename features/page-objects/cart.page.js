@@ -15,7 +15,6 @@ class CartPage extends Page {
                     await this.removeItemButton.click();
                     await browser.pause(1000);
                 }
-                await this.goToHomePage.click();
             }
             catch {
                 await browser.pause(500);

@@ -3,6 +3,7 @@ import { browser } from '@wdio/globals';
 
 class WomenPage extends Page {
     get sortBy() { return $('#selectProductSort');}
+    get productName() { return '[itemprop="name"]';}
     get firstProduct() { return $$('[itemprop="name"] a')[0];}
     get viewButton() { return $('[title="view"]');}
 

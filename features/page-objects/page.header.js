@@ -8,6 +8,7 @@ class PageHeader extends Page {
     get cartIcon() { return $('.shopping_cart a');}
     get womenSection() { return $('.sf-with-ul[title="Women"]');}
     get cartItemCount() { return $('.shopping_cart .ajax_cart_quantity');}
+    get cartEmpty() { return $('.ajax_cart_no_product');}
     
 }
 

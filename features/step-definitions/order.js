@@ -1,5 +1,4 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
-import homePage from '../page-objects/home.page.js';
 import womenPage from '../page-objects/women.page.js';
 import productPage from '../page-objects/product.page.js';
 import cartPage from '../page-objects/cart.page.js';
@@ -14,10 +13,11 @@ When('I search for {string}', async function(text) {
     await pageHeader.searchBarInput.setValue(text);
     await pageHeader.searchBarIcon.click();
 });
-Then('I see items containing text {string}', async function(text) {
-    const allFoundItems = await $$('[itemprop="name"]');
+Then('I see items containing text {string}', async function(text) { // Case insensitive search
+    const allFoundItems = await $$(womenPage.productName);
     await allFoundItems.forEach(async (foundItem) => {
-        await expect(foundItem).toHaveText(expect.stringContaining(text));
+        const itemText = await foundItem.getText();
+        await expect(itemText.toUpperCase()).toContain(text.toUpperCase());
     })
 });
 When('I sort items by \'In stock\'', async function() {
@@ -46,4 +46,4 @@ When('I press proceed to checkout button on the cart page', async function() {
 Then('I am asked to sign in or create an account', async function() {
     await browser.pause(500);
     await expect(authenticationPage.pageHeader).toHaveText(expect.stringContaining('AUTHENTICATION'));
-})
+});

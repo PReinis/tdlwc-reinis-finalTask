@@ -1,5 +1,5 @@
 Feature: Requires authentication to finish checkout for unregistered users
-    @first
+    @testcase1
     Scenario: When an unregistered user tries to proceed with checkout after ordering some item, the page
 should ask to create an account or sign in first, before letting the user finish the order.
 
