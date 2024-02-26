@@ -4,6 +4,7 @@ import AllureReporter from '@wdio/allure-reporter';
 import homePage from '../page-objects/home.page.js';
 import authenticationPage from '../page-objects/authentication.page.js';
 import accountPage from '../page-objects/account.page.js';
+import pageHeader from '../page-objects/page.header.js';
 
 Given('I have logged in as {word}', async function(name) {
     if (!Object.keys(users).includes(name)) {
@@ -12,7 +13,7 @@ Given('I have logged in as {word}', async function(name) {
     const user = users[name];
     AllureReporter.addArgument('user', user);
 
-    await homePage.SignInLink.click();
+    await pageHeader.SignInLink.click();
     await authenticationPage.input("email").setValue(user.email);
     await authenticationPage.input("passwd").setValue(user.password);
     await authenticationPage.signInButton.click();

@@ -4,10 +4,15 @@ import womenPage from '../page-objects/women.page.js';
 import productPage from '../page-objects/product.page.js';
 import cartPage from '../page-objects/cart.page.js';
 import authenticationPage from '../page-objects/authentication.page.js';
+import pageHeader from '../page-objects/page.header.js';
 
+
+When('I go to the Women section', async function() {
+    await pageHeader.womenSection.click();
+});
 When('I search for {string}', async function(text) {
-    await homePage.searchBarInput.setValue(text);
-    await homePage.searchBarIcon.click();
+    await pageHeader.searchBarInput.setValue(text);
+    await pageHeader.searchBarIcon.click();
 });
 Then('I see items containing text {string}', async function(text) {
     const allFoundItems = await $$('[itemprop="name"]');

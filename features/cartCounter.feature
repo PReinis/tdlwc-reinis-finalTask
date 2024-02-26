@@ -8,4 +8,6 @@ the counter on the cart should increase by 1.
         And I add an item to carts
         And I have an empty cart
         When I add an item to cart
-        # And I add an item to cart
+        Then I see cart item count 1
+        And I add another item to cart
+        Then I see cart item count 2
