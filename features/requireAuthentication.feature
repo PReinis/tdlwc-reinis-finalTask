@@ -7,7 +7,7 @@ should ask to create an account or sign in first, before letting the user finish
         When I go to the Women section
         And I sort items by 'In stock'
         And I choose the first item
-        And I change the item's attributes if it is not in stock
+        And I change the item's attributes
         And I add the item to the cart
         And I choose to proceed to checkout
         And I press proceed to checkout button on the cart page

@@ -25,7 +25,7 @@ When('I choose the first item', async function() {
     await womenPage.firstProduct.waitForClickable();
     await womenPage.firstProduct.click();
 });
-When('I change the item\'s attributes if it is not in stock', async function() {
+When('I change the item\'s attributes', async function() {
     await chooseProductSize('M');
     await productPage.availabilityStatus.waitForDisplayed();
     await expect(productPage.availabilityStatus).toHaveText(expect.stringContaining('In stock'));
@@ -43,6 +43,6 @@ When('I press proceed to checkout button on the cart page', async function() {
     await cartPage.proceedToCheckoutButton.click();
 });
 Then('I am asked to sign in or create an account', async function() {
-    await browser.pause(500);
+    await browser.pause(1000);
     await expect(authenticationPage.pageHeader).toHaveText(expect.stringContaining('AUTHENTICATION'));
 });

@@ -29,7 +29,7 @@ npm run tag -- "@testcase1"
 ```
 ## Test Case 2
 Users should be able to search a product using the search box at the top of the page. For
-example, searching for "Blouse" should only find results containing text "Blouse"
+example, searching for "Blouse" should only find results containing text "Blouse".
 
 To run this test individually run the command:
 ```
@@ -45,7 +45,7 @@ npm run tag -- "@testcase3"
 ```
 ## Test Case 4
 When there is 1 item in the cart, if the user removes an item from the cart, it now
-should display that there are no items anymore
+should display that there are no items anymore.
 
 To run this test individually run the command:
 ```
