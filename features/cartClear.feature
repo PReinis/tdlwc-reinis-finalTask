@@ -4,7 +4,6 @@ Feature: Cart displays that there are no items in cart after removing all items 
 should display that there are no items anymore
 
     Given I am on the home page
-    And I have logged in as Tomass
     When I add an item to cart
     And I remove items from cart
     Then I should see that the cart is empty

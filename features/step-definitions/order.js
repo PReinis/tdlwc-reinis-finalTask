@@ -4,16 +4,14 @@ import productPage from '../page-objects/product.page.js';
 import cartPage from '../page-objects/cart.page.js';
 import authenticationPage from '../page-objects/authentication.page.js';
 import pageHeader from '../page-objects/page.header.js';
+import { chooseProductSize } from '../utils/utils.js';
 
 
 When('I go to the Women section', async function() {
+    await pageHeader.womenSection.waitForClickable();
     await pageHeader.womenSection.click();
 });
-When('I search for {string}', async function(text) {
-    await pageHeader.searchBarInput.setValue(text);
-    await pageHeader.searchBarIcon.click();
-});
-Then('I see items containing text {string}', async function(text) { // Case insensitive search
+Then('I see items containing text {word}', async function(text) { // Case insensitive search
     const allFoundItems = await $$(womenPage.productName);
     await allFoundItems.forEach(async (foundItem) => {
         const itemText = await foundItem.getText();
@@ -24,11 +22,12 @@ When('I sort items by \'In stock\'', async function() {
     await womenPage.selectFromMenu('In stock');
 });
 When('I choose the first item', async function() {
+    await womenPage.firstProduct.waitForClickable();
     await womenPage.firstProduct.click();
 });
 When('I change the item\'s attributes if it is not in stock', async function() {
-    await browser.pause(2000); // Had to use a longer pause, because if the page was slow it failed loading the elements
-    await productPage.chooseSizeMenu.selectByIndex(1);
+    await chooseProductSize('M');
+    await productPage.availabilityStatus.waitForDisplayed();
     await expect(productPage.availabilityStatus).toHaveText(expect.stringContaining('In stock'));
 });
 When('I add the item to the cart', async function() {
@@ -36,7 +35,7 @@ When('I add the item to the cart', async function() {
     await productPage.addToCartButton.click();
 });
 When('I choose to proceed to checkout', async function() {
-    await productPage.proceedToCheckoutButton.waitForDisplayed();
+    await productPage.proceedToCheckoutButton.waitForClickable();
     await productPage.proceedToCheckoutButton.click();
 });
 When('I press proceed to checkout button on the cart page', async function() {

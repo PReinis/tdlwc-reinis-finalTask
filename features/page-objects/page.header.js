@@ -2,7 +2,6 @@ import { Page } from './page.js';
 import { browser } from '@wdio/globals';
 
 class PageHeader extends Page {
-    get SignInLink() { return $('.login');}
     get searchBarInput() { return $('.search_query');}
     get searchBarIcon() { return $('[name="submit_search"]');}
     get cartIcon() { return $('.shopping_cart a');}

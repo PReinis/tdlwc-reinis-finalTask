@@ -1,9 +1,13 @@
 Feature: Validating 'text contains' for items after searching
 
   @testcase2
-  Scenario: Users should be able to search a product using the search box at the top of the page. For
+  Scenario Outline: Users should be able to search a product using the search box at the top of the page. For
 example, searching for "Blouse" should only find results containing text "Blouse"
     Given I am on the home page
-    And I have logged in as Tomass
-    When I search for "blouse"
-    Then I see items containing text "blouse"
+    When I search for <searchFor>
+    Then I see items containing text <searchFor>
+
+    Examples:
+    | searchFor |
+    | Blouse    |
+    | blouse    | # case in-sensitive
