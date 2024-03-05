@@ -12,6 +12,9 @@ When('I go to the Women section', async function() {
     await pageHeader.womenSection.click();
 });
 Then('I see items containing text {word}', async function(text) { // Case insensitive search
+    // REVIEW: Why not put $$() in the page object?
+    // Also be carefull with $$(). It's not waiting for anything.
+    // If page loads slows, the allFoundItems would be an empty list.
     const allFoundItems = await $$(womenPage.productName);
     await allFoundItems.forEach(async (foundItem) => {
         const itemText = await foundItem.getText();
@@ -43,6 +46,7 @@ When('I press proceed to checkout button on the cart page', async function() {
     await cartPage.proceedToCheckoutButton.click();
 });
 Then('I am asked to sign in or create an account', async function() {
+    // REVIEW: Why pause? "expect" should wait anyway.
     await browser.pause(1000);
     await expect(authenticationPage.pageHeader).toHaveText(expect.stringContaining('AUTHENTICATION'));
 });
