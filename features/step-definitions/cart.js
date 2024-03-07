@@ -24,6 +24,10 @@ When('I add an item to cart', async function() {
     await productPage.homeIcon.waitForClickable();
     await productPage.homeIcon.click(); // Navigate back to home page
 });
+// REVIEW: This is too similar to "I add an item to cart"
+// There is a lot of duplicated code.
+// I would either generalize this step and make just one.
+//  Or move some common functionality into page objects so that it can be reused in both these steps.
 Then('I add another item to cart', async function() {
     await pageHeader.womenSection.click(); // Navigate to women's section
     await womenPage.selectFromMenu('Product Name: Z to A'); // Sort items by 'Product Name: Z to A'
